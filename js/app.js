@@ -1,11 +1,24 @@
-$.ajax({
-  url:"http://swapi.co/api/people/",
-  success: function(data){console.log(data);}
-});
+var json = (function () {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "http://swapi.co/api/people/",
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+})();
+
 
 function List(){
   return(
-    <h1>LIST</h1>
+    <div>
+      <h1>LIST</h1>
+      <h2>{json.results[0].name}</h2>
+    </div>
   );
 }
 
@@ -13,7 +26,7 @@ function List(){
     render: function() {
       return (
         <div>
-          This is a Star Wars Page.
+          This is a Star Wars Page
           <List/>
         </div>
       );
