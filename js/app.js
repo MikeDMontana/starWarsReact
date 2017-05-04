@@ -1,11 +1,34 @@
-$.ajax({
-  url:"http://swapi.co/api/people/",
-  success: function(data){console.log(data);}
+$.extend({
+  getValues:function(url) {
+    var result = null;
+    $.ajax({
+      url: "http://swapi.co/api/people/",
+      type:"get",
+      async: false,
+      success: function (data) {
+        result = data;
+      }
+    });
+  return result;
+  }
 });
+var results = $.getValues("url string");
+console.log(results);
 
-function List(){
+function Column(){
   return(
-    <h1>LIST</h1>
+    <div className="Column">
+      <p>{results.results[0].name}</p>
+    </div>
+  );
+}
+
+function Columnbox() {
+  return(
+    <div className="ColumnBox">
+        <Column />
+        <Column />
+    </div>
   );
 }
 
@@ -13,8 +36,8 @@ function List(){
     render: function() {
       return (
         <div>
-          This is a Star Wars Page.
-          <List/>
+          <Columnbox />
+
         </div>
       );
     }
