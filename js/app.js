@@ -12,12 +12,17 @@ var json = (function () {
     return json;
 })();
 
+function LoopThroughNames() {
+  for (var i = 0; i < json.results.length; i++) {
+    console.log(json.results[i].name);
+  }
+}
 
 function List(){
   return(
     <div>
       <h1>LIST</h1>
-      <h2>{json.results[0].name}</h2>
+      <LoopThroughNames />
     </div>
   );
 }
@@ -27,7 +32,7 @@ function List(){
       return (
         <div>
           This is a Star Wars Page
-          <List/>
+          <List />
         </div>
       );
     }
