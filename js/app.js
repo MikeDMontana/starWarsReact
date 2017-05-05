@@ -12,17 +12,13 @@ var json = (function () {
     return json;
 })();
 
-function LoopThroughNames() {
-  for (var i = 0; i < json.results.length; i++) {
-    console.log(json.results[i].name);
-  }
-}
+
 
 function List(){
   return(
     <div>
       <h1>LIST</h1>
-      <LoopThroughNames />
+      <h2>{json.results[0].name}</h2>
     </div>
   );
 }
